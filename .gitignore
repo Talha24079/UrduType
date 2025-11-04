@@ -13,6 +13,17 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
 # Mono auto generated files
 mono_crash.*
 
@@ -118,6 +129,12 @@ ipch/
 *.vspx
 *.sap
 
+# vcpkg
+vcpkg_installed/
+vcpkg/ports/buildtrees/
+vcpkg/ports/packages/
+vcpkg/ports/downloads/
+
 # Visual Studio Trace Files
 *.e2e
 
@@ -192,6 +209,14 @@ publish/
 # in these scripts will be unencrypted
 PublishScripts/
 
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+*.cmake
+!CMakeLists.txt
+
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
@@ -260,6 +285,13 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 ServiceFabricBackup/
 *.rptproj.bak
+
+# Qt
+moc_*
+qrc_*
+ui_*
+*.qm
+Makefile*
 
 # SQL Server files
 *.mdf
@@ -346,6 +378,10 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
+
+# Assets (keep font sources, ignore processed)
+assets/fonts/*.ttf
+!assets/fonts/placeholder.txt
 
 # Local History for Visual Studio
 .localhistory/
