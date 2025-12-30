@@ -4,83 +4,43 @@ A modern, cross-platform text editor specifically designed for **Urdu** and **Qu
 
 ## ✨ Features
 
-
-- **Advanced Text Shaping** — HarfBuzz-powered Nastaliq rendering  
-- **Cross-Platform** — Works on Windows, Linux, and macOS  
-- **PDF Export** — Preserve complex text shaping in exported documents  
-- **Modern UI** — Qt 6-based intuitive interface  
-- **Font Management** — Full support for Urdu-specific fonts  
+- **Advanced Text Shaping** — Custom C++ engine powered by HarfBuzz
+- **Cross-Platform** — Pixel-perfect UI on Windows, Linux, and macOS via Avalonia
+- **Hybrid Architecture** — High-performance C++ backend with a modern C# frontend
+- **PDF Export** — Vector-based export with preserved ligatures
+- **Modern UI** — Fluent-inspired interface with dark mode support
 
 ## 🛠️ Built With
 
-
 | Component | Purpose |
 |------------|----------|
-| **C++20** | Core programming language |
-| **Qt 6** | Cross-platform GUI framework |
-| **HarfBuzz** | Text shaping engine |
-| **FreeType** | Font rendering library |
-| **CMake** | Build and project management system |
+| **C# / .NET 8** | UI Logic and Application Layer |
+| **Avalonia UI** | Cross-platform XAML-based GUI |
+| **C++20** | Core Text Processing Engine (Shared Library) |
+| **HarfBuzz** | Text shaping (Backend) |
+| **FreeType** | Font rendering (Backend) |
 
 ## 📦 Installation
 
 ### Prerequisites
 
-- **Qt 6.9.3** or later  
-- **C++20** compatible compiler  
-- **vcpkg** for dependency management  
+- **.NET 8 SDK**
+- **C++20** compatible compiler
+- **CMake** (for building the C++ core)
 
-### 🪟 Windows (Visual Studio 2022)
-
-```powershell
-# Clone and setup
-git clone https://github.com/your-username/urdu-type.git
-cd urdu-type
-
-# Run setup script
-scripts\setup_env.bat
-
-# Build with CMake
-cmake -B build -S .
-cmake --build build --config Release
-```
-
-### 🐧 Linux / 🍎 macOS
+### 🪟 Windows / 🐧 Linux / 🍎 macOS
 
 ```bash
-# Clone and setup
-git clone https://github.com/your-username/urdu-type.git
+# Clone the repository
+git clone [https://github.com/your-username/urdu-type.git](https://github.com/your-username/urdu-type.git)
 cd urdu-type
 
-# Setup environment
-chmod +x scripts/setup_env.sh
-./scripts/setup_env.sh
+# 1. Build the C++ Core (The Engine)
+cd core
+cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+cd ..
 
-# Build
-cmake -B build -S .
-cmake --build build --config Release
-```
-
-## 🚀 Usage
-
-1. Launch **UrduType**  
-2. Load or create a new document  
-3. Type Urdu/Arabic text — shaping is applied automatically  
-4. Use formatting tools for styling  
-5. Export to **PDF** with preserved text layout  
-
-## 🗂️ Project Structure
-
-```
-UrduType/
-├── include/          # Header files
-├── src/              # Source files
-├── assets/fonts/     # Font resources
-├── scripts/          # Build and setup scripts
-└── tests/            # Unit tests
-```
-
-## 📄 License
-
-Distributed under the **MIT License**.  
-See [`LICENSE`](LICENSE) for more information.
+# 2. Run the UI (The Frontend)
+# The csproj is configured to load the compiled C++ library
+dotnet run --project src/UrduType.UI/UrduType.UI.csproj
